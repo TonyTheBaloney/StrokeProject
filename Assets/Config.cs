@@ -2,14 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
-using System.Text.Json;
 
 public class Config : MonoBehaviour
 {
 
-    public string configContent;
+    string configContent;
 
-    public ConfigInfo configInfo;
+    ConfigInfo configInfo;
     public Config(){
         // Check if config file exists
         if(!File.Exists(this.getConfigLocation())){
@@ -30,9 +29,16 @@ public class Config : MonoBehaviour
     public string getConfigContents(){
         return File.ReadAllText(this.getConfigLocation());
     }
+
+    public string getPID(){
+        return configInfo.PID;
+    }
 }
 
 
 public class ConfigInfo {
-    public string myGlobalVar;
+    public bool recording;
+    public string recordingDirectory;
+    public string PID;
+
 }
